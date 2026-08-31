@@ -4,6 +4,12 @@ class DivisionPorCeroError(Exception):
 
 
 def dividir(dividendo: float, divisor: float) -> float:
+    if not isinstance(dividendo, (int, float)) or not isinstance(divisor, (int, float)):
+        raise TypeError("Ambos argumentos deben ser numéricos")
+
+    if isinstance(dividendo, bool) or isinstance(divisor, bool):
+        raise TypeError("Ambos argumentos deben ser numéricos")
+
     if divisor == 0:
         raise DivisionPorCeroError("No se puede dividir entre cero")
 
